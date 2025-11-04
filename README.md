@@ -70,6 +70,8 @@ docker-compose up -d
 | HTB_ALWAYS_RUN_LLM_FILTER | Always run LLM filter (use filter before analysis) | "True" or "False" | "False" |
 | HTB_TRADE_MIN_RR | Minimum Risk:Reward ratio required to propose a trade | "1.6" | 1.4 |
 | HTB_USE_HEIKIN_ASHI | Use Heikin Ashi candles in generated charts | "True" or "False" | False |
+| HTB_DISABLE_AVAILABLE_BALANCE_ALERT | Disable notifications when available balance exceeds $100 USDC | "True" or "False" | "True" |
+| HTB_DISABLE_WS_RESTART_ALERT | Disable automatic application restart and notifications on websocket errors/closure | "True" or "False" | "True" |
 
 ## Technical Analysis Modes
 

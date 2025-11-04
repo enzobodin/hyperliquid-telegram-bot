@@ -42,13 +42,13 @@ class HyperliquidUtils:
 
     def on_websocket_error(self, ws, error):
         logger.error(f"Websocket error: {error}")
-        if os.getenv("HTB_DISABLE_WS_RESTART", "True").lower() == "false":
+        if os.getenv("HTB_DISABLE_WS_RESTART_ALERT", "True").lower() == "false":
             telegram_utils.send_and_exit("Websocket error, restarting the application...")
 
 
     def on_websocket_close(self, ws, close_status_code, close_msg):
         logger.warning(f"Websocket closed: {close_msg}")
-        if os.getenv("HTB_DISABLE_WS_RESTART", "True").lower() == "false":
+        if os.getenv("HTB_DISABLE_WS_RESTART_ALERT", "True").lower() == "false":
             telegram_utils.send_and_exit("Websocket closed, restarting the application...")
 
 
