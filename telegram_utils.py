@@ -195,13 +195,14 @@ class TelegramUtils:
             return
             
         self.telegram_app.post_shutdown = shutdown
-        self.telegram_app.job_queue.run_once(
-            self.send_message,
-            when=0.25,
-            job_kwargs={'misfire_grace_time': 180},
-            data="Hyperliquid Telegram bot up and running",
-            chat_id=self.telegram_chat_id,
-        )
+        if os.getenv("HTB_DISABLE_WS_RESTART", "True").lower() == "false":
+            self.telegram_app.job_queue.run_once(
+                self.send_message,
+                when=0.25,
+                job_kwargs={'misfire_grace_time': 180},
+                data="Hyperliquid Telegram bot up and running",
+                chat_id=self.telegram_chat_id,
+            )
 
         self.telegram_app.run_polling(allowed_updates=Update.ALL_TYPES)
 

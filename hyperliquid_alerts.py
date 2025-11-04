@@ -15,7 +15,7 @@ async def check_profit_percentage(context: ContextTypes.DEFAULT_TYPE) -> None:
         total_balance = float(user_state['marginSummary']['accountValue'])
         available_balance = float(user_state['withdrawable'])
         
-        if available_balance > 100:
+        if available_balance > 100 and os.getenv("HTB_DISABLE_AVAILABLE_BALANCE_ALERT", "True").lower() == "false":
             message = [
                 "💰 <b>Available balance alert</b> 💰",
                 f"Total balance: {fmt(total_balance)} USDC",
